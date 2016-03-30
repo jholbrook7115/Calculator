@@ -60,6 +60,18 @@ public class CalculatorTest {
         String input = "3 * 1";
         double expected = 3.0;
         double actual = calc.calculation(input);
+
+        assertEquals("3 * 1 should equal 3", expected, actual, 0.0);
+    }
+
+    @Test
+    public void testNegativeNumbers(){
+        Calculator calc = new Calculator();
+
+        String input = "-3 * 1";
+        double expected = -3.0;
+        double actual = calc.calculation(input);
+        assertEquals("-3 * 1 should equal -3.0", expected, actual, 0.0);
     }
 
 }

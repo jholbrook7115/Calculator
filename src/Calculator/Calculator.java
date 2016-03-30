@@ -16,6 +16,17 @@ public class Calculator {
 
     public double calculation(String str) {
         String[] parsedInput = str.split("\\s+");
+        for(int i = 1; i < parsedInput.length; i=i+2){
+            if(parsedInput[i] == "-"){
+                //change the number following it to a negative
+                if(parsedInput[i+1].equals("\\-[0-9]*")){
+                    parsedInput[i+1].split("\\-");
+                } else {
+                    parsedInput[i+1] = "-" + parsedInput[i+1];
+                    parsedInput[i] = "+";
+                }
+            }
+        }
         return calculate(0.0, parsedInput);
 
     }
@@ -39,7 +50,7 @@ public class Calculator {
             }
         } else {
             StringBuilder sb = new StringBuilder();
-            for(int i = 1; i < expr.length; i++){
+            for(int i = 1; i < expr.length; i=i+2){
                 switch(expr[i]){
                     case "*":
                     case "/":
@@ -47,6 +58,7 @@ public class Calculator {
                         calculate(result, expr);
                     case "+":
                     case "-":
+
                 }
             }
             result += calculate(result, expr);
